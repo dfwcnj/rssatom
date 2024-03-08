@@ -181,7 +181,11 @@ class RSSAtom2HTML():
         except Exception as e:
             print('getRSSAtom url %s: %s' % (url, e),file=sys.stderr )
             sys.exit(1)
-        self.rstr = resp.read().decode('utf-8')
+        try:
+            self.rstr = resp.read().decode('utf-8')
+        except Exception as e:
+            print('getRSSAtom %s: %s' % (url, e) )
+            sys.exit()
         return self.rstr
 
     def reportHTML(self):

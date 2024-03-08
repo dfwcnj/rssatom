@@ -43,7 +43,7 @@ class RSSAtom2HTML():
                 self.htmla.append(h)
             elif tag == 'link':
                 if txt:
-                    h == '<a href="%s">%s</a>' % (txt, tag)
+                    h = '<a href="%s">%s</a>' % (txt, tag)
                     self.htmla.append(h)
             elif tag in ['credit', 'description', 'copyright', 'pubDate',
                          'lastBuildDate', 'updated', 'updatePeriod']:
@@ -72,10 +72,10 @@ class RSSAtom2HTML():
                 h = '<p>%s</p>' % (txt)
                 self.htmla.append(h)
             elif tag == 'email':
-                h == '<a href="mailto:%s">%s</a>' % (txt, tag)
+                h = '<a href="mailto:%s">%s</a>' % (txt, tag)
                 self.htmla.append(h)
             elif tag == 'uri':
-                h == '<a href="%s">%s</a>' % (txt, tag)
+                h = '<a href="%s">%s</a>' % (txt, tag)
                 self.htmla.append(h)
             elif tag == 'url':
                 url = txt
@@ -83,6 +83,8 @@ class RSSAtom2HTML():
                 width = txt
             elif tag == 'height':
                 height = txt
+            elif tag == 'entry':
+                pass
             else:
                 if url:
                     h = '<img src="%s" width="%s height="%s">' % (url,
@@ -102,21 +104,21 @@ class RSSAtom2HTML():
                 elif k == 'href':
                     h = '<a href="%s">link</a>' % (v)
                     self.htmla.append(h)
-                    continue
                 elif k == 'domain':
                     domains.add(v)
-                    continue
+                elif k == 'type':
+                    pass
                 elif k == 'width':
                     awidth = v
                 elif k == 'height':
                     aheight = v
+                else:
+                    print('RSSAtomChild attr: k %s v %s' % (k, v),
+                        file=sys.stderr )
                 if aurl:
                     h = '<img src="%s" width="%s height="%s">' % (aurl,
                          awidth, aheight)
                     self.htmla.append(h)
-                else:
-                    print('RSSAtomChild attr: k %s v %s' % (k, v),
-                        file=sys.stderr )
             self.processRSSAtomChild(child)
             if len(categories):
                 h = '<p>categories: %s</p>' % (','.join(categories))
@@ -147,15 +149,25 @@ class RSSAtom2HTML():
                 h = '<p>%s: %s</p>' % (tag, txt)
             elif tag == 'rights':
                 h = '<p>%s: %s</p>' % (tag, txt)
+            elif tag == 'entry':
+                pass
+            elif tag == 'author':
+                pass
             else:
                 print('RSSAtom tag: %s text: %s' %(tag, txt), file=sys.stderr)
             if h:
                 self.htmla.append(h)
-                continue
             ad = child.attrib
             for k in ad.keys():
                 v = ad[k]
-                print('RSSAtom attr: k %s v %s' % (k, v),file=sys.stderr )
+                if k == 'type':
+                    pass
+                elif k == 'rel':
+                    pass
+                elif k == 'href':
+                    pass
+                else:
+                    print('RSSAtom attr: k %s v %s' % (k, v),file=sys.stderr )
             self.processRSSAtomChild(child)
         self.htmla.append('</html>')
 
@@ -196,7 +208,7 @@ def main():
         with open(args.htmlfile, 'w') as fp:
             fp.write(html)
         if args.show:
-            webbrowser.open('file://%s' % (args.htmlfile) )
+            webbrowser.open('file://%s' % (args.htmlfile), new=0 )
     else:
         print(html)
 

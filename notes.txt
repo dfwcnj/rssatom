@@ -18,10 +18,21 @@
   http://rss.cnn.com/rss/money_news_companies.rss
   http://rss.cnn.com/rss/money_news_international.rss
 
+  # cnbc
+  https://www.cnbc.com/rss-feeds/
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100727362
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15837362
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10001147
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664
+  https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839069
+
   # washingtonpost
   https://www.washingtonpost.com/discussions/2018/10/12/washington-post-rss-feeds/
   https://feeds.washingtonpost.com/rss/world?itid=lk_inline_manual_35
   https://feeds.washingtonpost.com/rss/business?itid=lk_inline_manual_36
+  https://feeds.washingtonpost.com/rss/entertainment?itid=lk_inline_manual_38
 
   # nytimes
   https://www.nytimes.com/rss

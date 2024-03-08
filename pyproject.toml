@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "newsfeed"
+name = "rssatom"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
@@ -27,12 +27,12 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Documentation = "https://github.com/unknown/newsfeed#readme"
-Issues = "https://github.com/unknown/newsfeed/issues"
-Source = "https://github.com/unknown/newsfeed"
+Documentation = "https://github.com/unknown/rssatom#readme"
+Issues = "https://github.com/unknown/rssatom/issues"
+Source = "https://github.com/unknown/rssatom"
 
 [tool.hatch.version]
-path = "src/newsfeed/__about__.py"
+path = "src/rssatom/__about__.py"
 
 [project.scripts]
 rssatom2html = "rssatom.rssatom2html:main"
@@ -62,19 +62,19 @@ dependencies = [
   "mypy>=1.0.0",
 ]
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/newsfeed tests}"
+check = "mypy --install-types --non-interactive {args:src/rssatom tests}"
 
 [tool.coverage.run]
-source_pkgs = ["newsfeed", "tests"]
+source_pkgs = ["rssatom", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/newsfeed/__about__.py",
+  "src/rssatom/__about__.py",
 ]
 
 [tool.coverage.paths]
-newsfeed = ["src/newsfeed", "*/newsfeed/src/newsfeed"]
-tests = ["tests", "*/newsfeed/tests"]
+rssatom = ["src/rssatom", "*/rssatom/src/rssatom"]
+tests = ["tests", "*/rssatom/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
